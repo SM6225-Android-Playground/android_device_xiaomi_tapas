@@ -1,0 +1,23 @@
+attribute vendor_service_type;
+
+# Definições base da HAL usando os atributos oficiais do Android
+attribute vendor_hal_displayfeature_xiaomi;
+attribute vendor_hal_displayfeature_xiaomi_client;
+attribute vendor_hal_displayfeature_xiaomi_server;
+
+# Garante que o grupo da HAL herde as permissões de HAL do Android
+expandattribute vendor_hal_displayfeature_xiaomi_client true;
+expandattribute vendor_hal_displayfeature_xiaomi_server true;
+
+# Nós de hardware
+type vendor_displayfeature_device, dev_type;
+type vendor_sysfs_displayfeature, fs_type, sysfs_type;
+
+# Serviço do manager
+type vendor_mistcdisplay_service, vendor_service_type, service_manager_type;
+
+# O executável agora é um HALSVERDOMAIN (Isso resolve o Neverallow do Binder!)
+type vendor_hal_displayfeature_xiaomi_default_exec, exec_type, vendor_file_type, file_type;
+type vendor_hal_displayfeature_xiaomi_default, domain, halserverdomain, vendor_hal_displayfeature_xiaomi_server;
+init_daemon_domain(vendor_hal_displayfeature_xiaomi_default)
+

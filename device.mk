@@ -417,7 +417,8 @@ PRODUCT_PACKAGES += \
     SettingsResTapas \
     SystemUIResTapas \
     TelephonyResTapas \
-    WifiResTapas
+    WifiResTapas \
+    Launcher3Tapas
 
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
@@ -543,6 +544,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
+PRODUCT_DEX_PREOPT_MODULE_CONFIGS += qti-telephony-common,disable
+PRODUCT_DEXPREOPT_DISABLED_MODULES += qti-telephony-common
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.cdma.xml \
